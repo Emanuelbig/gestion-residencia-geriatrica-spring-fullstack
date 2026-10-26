@@ -1,0 +1,17 @@
+<%@page pageEncoding="UTF-8"%>
+<%-- Barra de arriba, igual en todas las pantallas. Marca en blanco la sección en la que estás.
+     El pageEncoding de arriba hace falta: un fragmento no hereda el del JSP que lo incluye. --%>
+<c:set var="base" value="${pageContext.request.contextPath}"/>
+<%-- después del forward, la URL original (/residentes, /habitaciones...) queda guardada en este atributo --%>
+<c:set var="actual" value="${requestScope['jakarta.servlet.forward.servlet_path']}"/>
+<header class="barra">
+    <a class="marca" href="${base}/">Residencia Geriátrica</a>
+    <nav>
+        <a href="${base}/residentes" class="${actual == '/residentes' ? 'activo' : ''}">Residentes</a>
+        <a href="${base}/enfermeros" class="${actual == '/enfermeros' ? 'activo' : ''}">Enfermeros</a>
+        <a href="${base}/habitaciones" class="${actual == '/habitaciones' ? 'activo' : ''}">Habitaciones</a>
+        <a href="${base}/reservas" class="${actual == '/reservas' ? 'activo' : ''}">Reservas</a>
+        <a href="${base}/asignaciones" class="${actual == '/asignaciones' ? 'activo' : ''}">Enfermeros por habitación</a>
+        <a href="${base}/reportes" class="${actual == '/reportes' ? 'activo' : ''}">Consultas</a>
+    </nav>
+</header>
